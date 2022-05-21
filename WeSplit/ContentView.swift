@@ -26,11 +26,23 @@ struct ContentView: View {
                             Text("\($0) people")
                         }
                     }
-                } //: SECTION
+                } //: SECTION 1
+                
+                Section {
+                    Picker("Tip percentage", selection: $tipPercentage) {
+                        ForEach(tipPercentages, id: \.self) {
+                            Text($0, format: .percent)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("How much tip do you want to leave?")
+                } //: SECTION 2
                 
                 Section {
                     Text(checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                } //: SECTION
+                } //: SECTION 3
+                
             } //: FORM
             .navigationTitle("WeSplit")
         } //: NAVIGATION
